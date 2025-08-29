@@ -48,7 +48,9 @@ Steps I followed:
    - HTTP (80) → Anywhere  
    - HTTPS (443) → Anywhere  
 3. Connected via SSH:
-
+      ```bash
+   ssh -i mykey.pem ec2-user@<EC2-Public-IP>
+      
 ## 4️⃣ Networking Commands Cheat Sheet
 Command	Example	Usage
 ping	ping google.com	Check connectivity
@@ -60,14 +62,10 @@ nslookup	nslookup google.com	DNS lookup
 ✅ Week 1 Summary
 
 Understood OSI & TCP/IP models
-
 Documented DevOps-relevant protocols & ports
-
 Practiced AWS EC2 + Security Groups
-
 Hands-on with essential networking commands
 
 📖 Part of my #90DaysOfDevOps 2025 Journey 🚀
 Stay tuned for Week 2!
-   ```bash
-   ssh -i mykey.pem ec2-user@<EC2-Public-IP>
+
