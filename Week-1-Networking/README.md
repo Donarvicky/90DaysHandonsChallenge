@@ -1,215 +1,111 @@
-📘 Week 1: Networking Fundamentals – 90 Days of DevOps 🚀
+# 📚 Week 1: Networking Fundamentals
 
-Welcome to Week 1 of the 90 Days of DevOps – 2025 Edition!
-This week we focus on Networking basics that every DevOps engineer must know.
+Welcome to **Week 1** of the **90 Days of DevOps - 2025 Edition**!  
+This week, we explored the core of **Networking Fundamentals**, including OSI & TCP/IP models, AWS EC2 Security Groups, and practical Linux networking commands.  
 
-✅ Task 1: OSI Model
-Introduction
+---
 
-The OSI (Open Systems Interconnection) model is a conceptual framework that describes how data moves across networks. It has 7 layers, each responsible for specific tasks.
+## ✅ Task 1: OSI Model (Theory)
 
-The 7 Layers of OSI
+### 📌 Introduction
+The **OSI Model** is a conceptual framework that standardizes how different systems communicate over a network. It has **7 layers**, each with its own purpose.
 
-Physical Layer → Wires, cables, Wi-Fi.
+### 🔹 OSI Layers
 
-Data Link Layer → MAC address, Ethernet.
+| Layer | Description | Example |
+|-------|-------------|---------|
+| 1. Physical     | Sends raw data over cables/wireless | Ethernet, Wi-Fi |
+| 2. Data Link    | Transfers data between devices | Switch, MAC Address |
+| 3. Network      | Routes data across networks | IP, Router |
+| 4. Transport    | Ensures reliable delivery | TCP, UDP |
+| 5. Session      | Maintains communication sessions | API Calls |
+| 6. Presentation | Data formatting & encryption | SSL/TLS |
+| 7. Application  | User-facing layer | Browser, Email |
 
-Network Layer → IP addressing, routing.
+### 🎯 Conclusion
+The OSI model helps us understand **how data flows step by step** in a network.
 
-Transport Layer → Reliable delivery (TCP/UDP).
+---
 
-Session Layer → Manage sessions (start, maintain, end).
+## ✅ Task 2: TCP/IP Model (Practical)
 
-Presentation Layer → Data encryption, compression.
+### 📌 Introduction
+The **TCP/IP Model** is the real-world implementation of networking, used in the **Internet**. It has 4 layers.
 
-Application Layer → User-facing (HTTP, FTP, DNS).
+### 🔹 TCP/IP Layers
 
-Example
+| Layer | Description | Example |
+|-------|-------------|---------|
+| 1. Application | User applications & protocols | HTTP, DNS, SMTP |
+| 2. Transport   | Ensures reliable/unreliable delivery | TCP, UDP |
+| 3. Internet    | Logical addressing & routing | IP, ICMP |
+| 4. Network Access | Physical data transfer | Ethernet, Wi-Fi |
 
-If a web page is not loading:
+### 🎯 Conclusion
+Unlike the OSI model (theory), **TCP/IP is implemented in real life** and powers the modern internet.
 
-Check Physical Layer → Cable/connection issue?
+---
 
-Check Network Layer → Wrong IP or routing?
+## ✅ Task 3: AWS EC2 and Security Groups
 
-Check Application Layer → Server issue?
+### 📌 Introduction
+When launching an EC2 instance, **Security Groups (SGs)** act like firewalls. They control inbound (incoming) and outbound (outgoing) traffic.
 
-Best Practices
+### 🔹 Step-by-Step
 
-Troubleshoot bottom-to-top.
+1. **Launch EC2 Instance**
+   - AMI: Amazon Linux (Free Tier)
+   - Type: `t2.micro`
+   - Key Pair: Create or select one
+   - Security Group: Create New
 
-Use mnemonics → All People Seem To Need Data Processing.
+2. **Configure Security Group Rules**
+   - SSH (22) → My IP
+   - HTTP (80) → 0.0.0.0/0
+   - HTTPS (443) → 0.0.0.0/0
 
-Conclusion
+3. **Connect**
+   ```bash
+   ssh -i mykey.pem ec2-user@<public-ip>
+🔹 Step 5: Testing Security Group Rules
+If SSH (22) is open only to your IP → only you can connect.
 
-The OSI model is a troubleshooting roadmap for network engineers.
+If HTTP (80) is open → you can access a web server via browser.
 
-✅ Task 2: TCP/IP Model
-Introduction
+Removing HTTP rule → browser cannot reach server.
 
-The TCP/IP model is the practical networking model used on the internet. It has 4 layers.
-
-The 4 Layers
-
-Network Interface → Ethernet, Wi-Fi.
-
-Internet → IP addressing, routing.
-
-Transport → TCP/UDP protocols.
-
-Application → HTTP, DNS, SSH.
-
-Example
-
-When opening google.com:
-
-Application Layer → Browser sends HTTP request.
-
-Transport Layer → TCP splits data.
-
-Internet Layer → IP finds route.
-
-Network Layer → Data sent physically.
-
-Testing
-curl google.com
-
-Best Practices
-
-Use TCP when reliability matters.
-
-Use UDP when speed matters.
-
-Conclusion
-
-TCP/IP is the foundation of the internet.
-
-✅ Task 3: Networking Protocols & Ports
-Introduction
-
-Protocols are rules of communication. Ports are doors for services.
-
-Common Protocols & Ports
-
-SSH (22) → Remote login.
-
-HTTP (80) → Web traffic.
-
-HTTPS (443) → Secure web.
-
-FTP (21) → File transfers.
-
-DNS (53) → Domain lookup.
-
-SMTP (25/587) → Email.
-
-MySQL (3306) → Database.
-
-Testing Ports
-nc -zv <server-ip> 22
-netstat -tulnp
-
-Best Practices
-
-Open only required ports.
-
-Use firewall/security groups.
-
-Prefer HTTPS over HTTP.
-
-Conclusion
-
-Protocols + Ports = Communication backbone of networks.
+✅ Best Practices
+Always restrict SSH (22) to your IP.
+Allow HTTP/HTTPS for public servers.
+Never expose databases directly to the internet.
+Remember: Security Groups are stateful.
 
 ✅ Task 4: Networking Commands Cheat Sheet
+📌 Introduction
+These Linux commands are the first line of defense when debugging connectivity, DNS, or web services.
+
+🔹 Command Reference
 Command	Example	Usage
-ping	ping google.com	Check connectivity
+**ping	ping google.com	Check connectivity
 traceroute	traceroute google.com	Trace network path
 netstat -tulnp	—	Show listening ports
 curl	curl -I http://example.com	Test HTTP requests
 dig	dig google.com	DNS lookup
 nslookup	nslookup google.com	DNS lookup
-ifconfig / ip a	—	Show IP details
-Best Practices
+ifconfig / ip a	—	Show IP details**
 
+✅ Best Practices
 Use ping + traceroute for connectivity issues.
+Use netstat to check active services.
+Use curl to test HTTP responses.
+Prefer dig over nslookup for detailed DNS info.
 
-Use netstat to see what’s running.
+✅ Task 5: Week 1 Summary
+📌 Learnings
+**Understood the OSI Model (7 layers) and its role in communication.
+Learned the TCP/IP Model (4 layers) and real-world implementation.
+Practiced AWS EC2 Instance + Security Group configuration.
+Explored Linux networking commands for troubleshooting.**
 
-Use curl to debug web apps.
-
-✅ Task 5: AWS EC2 & Security Groups
-Introduction
-
-When you launch an AWS EC2 instance, you need a Security Group (SG) to control who can access your server and on which ports.
-
-Step 1: Launch EC2 Instance
-
-AWS Console → EC2 → Launch Instance.
-
-Name: my-first-ec2.
-
-AMI: Amazon Linux (Free Tier).
-
-Type: t2.micro.
-
-Create/Select key pair (for SSH).
-
-Configure Security Group.
-
-Step 2: Security Group Basics
-
-Inbound rules → Who can connect to EC2.
-
-Outbound rules → Where EC2 can connect out.
-
-Default:
-
-Inbound = empty (no one can connect).
-
-Outbound = all allowed (EC2 can reach internet).
-
-Step 3: Add Rules
-
-SSH (22) → Allow My IP.
-
-HTTP (80) → Allow 0.0.0.0/0.
-
-HTTPS (443) → Allow 0.0.0.0/0.
-
-Step 4: Connect
-ssh -i mykey.pem ec2-user@<public-ip>
-
-Step 5: Testing Rules
-
-If SSH → only your IP can connect.
-
-If HTTP open → everyone can view webserver.
-
-Remove HTTP rule → server not reachable on port 80.
-
-Best Practices
-
-Never open SSH (22) to 0.0.0.0/0.
-
-Open HTTP/HTTPS for websites.
-
-Keep DB ports private.
-
-Conclusion
-
-Security Groups = firewall for your EC2. Always allow only what’s required.
-
-🎯 Week 1 Summary
-
-✅ Understood OSI & TCP/IP models.
-
-✅ Learned Protocols & Ports.
-
-✅ Practiced Networking Commands.
-
-✅ Launched EC2 with Security Groups.
-
-📖 Part of my #90DaysOfDevOps 2025 Journey 🚀
-Stay tuned for Week 2!
-
+🎯 Conclusion
+Week 1 gave a strong foundation in Networking Basics — essential for any DevOps Engineer 🚀
