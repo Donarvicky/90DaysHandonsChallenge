@@ -80,32 +80,43 @@ Allow HTTP/HTTPS for public servers.
 Never expose databases directly to the internet.
 Remember: Security Groups are stateful.
 
-✅ Task 4: Networking Commands Cheat Sheet
-📌 Introduction
-These Linux commands are the first line of defense when debugging connectivity, DNS, or web services.
+## ✅ Task 4: Networking Commands Cheat Sheet
 
-🔹 Command Reference
-Command	Example	Usage
-**ping	ping google.com	Check connectivity
-traceroute	traceroute google.com	Trace network path
-netstat -tulnp	—	Show listening ports
-curl	curl -I http://example.com	Test HTTP requests
-dig	dig google.com	DNS lookup
-nslookup	nslookup google.com	DNS lookup
-ifconfig / ip a	—	Show IP details**
+### 📌 Introduction
+These Linux commands are the **first line of defense** when debugging connectivity, DNS, or web services.
 
-✅ Best Practices
-Use ping + traceroute for connectivity issues.
-Use netstat to check active services.
-Use curl to test HTTP responses.
-Prefer dig over nslookup for detailed DNS info.
+### 🔹 Command Reference
 
-✅ Task 5: Week 1 Summary
-📌 Learnings
-**Understood the OSI Model (7 layers) and its role in communication.
-Learned the TCP/IP Model (4 layers) and real-world implementation.
-Practiced AWS EC2 Instance + Security Group configuration.
-Explored Linux networking commands for troubleshooting.**
+| Command | Example | Usage |
+|---------|---------|-------|
+| ping    | `ping google.com` | Check connectivity |
+| traceroute | `traceroute google.com` | Trace network path |
+| netstat -tulnp | — | Show listening ports |
+| curl    | `curl -I http://example.com` | Test HTTP requests |
+| dig     | `dig google.com` | DNS lookup |
+| nslookup | `nslookup google.com` | DNS lookup |
+| ifconfig / ip a | — | Show IP details |
 
-🎯 Conclusion
-Week 1 gave a strong foundation in Networking Basics — essential for any DevOps Engineer 🚀
+### ✅ Best Practices
+- Use **ping + traceroute** for connectivity issues.  
+- Use **netstat** to check active services.  
+- Use **curl** to test HTTP responses.  
+- Prefer **dig** over nslookup for detailed DNS info.  
+
+### 🎯 Conclusion
+Learning these commands builds a strong foundation for **troubleshooting networks and services in Linux systems**.
+
+---
+
+## ✅ Task 5: Week 1 Summary
+
+### 📌 Learnings
+- Understood the **OSI Model (7 layers)** and its role in communication.  
+- Learned the **TCP/IP Model (4 layers)** and real-world implementation.  
+- Practiced **AWS EC2 Instance + Security Group configuration**.  
+- Explored **Linux networking commands** for troubleshooting.  
+
+### 🎯 Conclusion
+Week 1 gave a **solid foundation in Networking Basics** — an essential skill for every aspiring **DevOps Engineer 🚀**.
+
+---
