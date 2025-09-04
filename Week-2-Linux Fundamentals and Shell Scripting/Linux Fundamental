@@ -1,1 +1,94 @@
+# 📚 Week 2: Linux System Administration & Automation
+# YAML file containing all tasks with commands and comments
 
+week2:
+  task1_user_and_group_management:
+    # Create a new user
+    - sudo useradd devops_user
+    
+    # Create a new group
+    - sudo groupadd devops_team
+    
+    # Add user to the group
+    - sudo usermod -aG devops_team devops_user
+    
+    # Set password for user
+    - sudo passwd devops_user
+    
+    # Grant sudo access (edit /etc/sudoers)
+    - "echo 'devops_user ALL=(ALL) NOPASSWD:ALL' | sudo tee -a /etc/sudoers"
+    
+    # Restrict SSH login (edit sshd_config)
+    - "echo 'DenyUsers testuser' | sudo tee -a /etc/ssh/sshd_config"
+
+  task2_file_and_directory_permissions:
+    # Create a workspace directory
+    - mkdir /devops_workspace
+    
+    # Create a file
+    - touch /devops_workspace/project_notes.txt
+    
+    # Set permissions: Owner (rw), Group (r), Others (no access)
+    - chmod 640 /devops_workspace/project_notes.txt
+    
+    # Verify permissions
+    - ls -l /devops_workspace/project_notes.txt
+
+  task3_log_file_analysis:
+    # Download log file
+    - wget https://raw.githubusercontent.com/logpai/loghub/master/Linux/Linux_2k.log
+    
+    # Find all error logs
+    - grep "error" Linux_2k.log
+    
+    # Extract timestamps and log levels
+    - awk '{print $1, $2, $3}' Linux_2k.log
+    
+    # Mask IP addresses
+    - sed -E 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/[REDACTED]/g' Linux_2k.log > secure.log
+    
+    # Find most frequent log entries
+    - awk '{print $5}' Linux_2k.log | sort | uniq -c | sort -nr | head -10
+
+  task4_volume_management:
+    # Create mount directory
+    - sudo mkdir /mnt/devops_data
+    
+    # Mount volume (example: loop device /dev/xvdf)
+    - sudo mount /dev/xvdf /mnt/devops_data
+    
+    # Verify mount
+    - df -h
+    - mount | grep devops_data
+
+  task5_process_management:
+    # Start a background process
+    - "ping google.com > ping_test.log &"
+    
+    # Check running process
+    - ps aux | grep ping
+    
+    # Monitor live processes
+    - top
+    
+    # Kill a process by PID
+    - "kill -9 <pid>"
+
+  task6_automated_backups:
+    # Create backup script file
+    - nano backup.sh
+    
+    # Script content (to be pasted in backup.sh)
+    - |
+      #!/bin/bash
+      backup_file="/backups/backup_$(date +%F).tar.gz"
+      tar -czf $backup_file /devops_workspace
+      echo -e "\e[32mBackup Successful: $backup_file\e[0m"
+    
+    # Make script executable
+    - chmod +x backup.sh
+    
+    # Schedule with cron (open crontab editor)
+    - crontab -e
+    
+    # Add
